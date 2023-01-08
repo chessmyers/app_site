@@ -9,7 +9,7 @@
     <meta name="description" content="Adderall - Let Addy from Adderall help you study the right way.">
     <meta name="author" content="">
 
-    <title>Adderall App</title>
+    <title>Addy App</title>
 
     <!-- Custom styles for this template -->
     <link href="css/new-age.css" rel="stylesheet">
@@ -86,6 +86,10 @@
   transform: scaleX(1.2) scaleY(1.2);
 }
 
+	.transform-minimize {
+		transform: scaleX(0.0) scaleY(0.0);
+	}
+
 @media only screen and (max-width: 479px){
 
   #container {
@@ -108,33 +112,73 @@
   }
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+label,
+input,
+button {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+label {
+  margin-bottom: 8px;
+  font-size: 120%;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(0,0,0,0);
+  color: rgb(14,122,254);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
 </style>
 
 
   </head>
 
 <body>
-  <div id="container" class="transform">
+  <div id="container" class="transform" style="display: block">
     <div id="inner" onclick="pressButton()">
-
-      <!-- <img src="img/appIconHighRez.png"/> -->
     </div>
+  </div>
+  <div id="download-container" style="display: none">
+	<a href="#">
+		<img src="./appstore.png" alt="Download for iPhone" />
+	</a>
+	<a href="#">
+		<img src="./googleplay.png" alt="Download for Android" />
+	</a>
   </div>
 </body>
-
-<!-- <body>
-  <div id="container">
-    <div id="inner">
-      <div class="demo-img">
-        <div class="demo-overlay">
-          <svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 612 612" xml:space="preserve">
-
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</body> -->
 
 <script type="text/javascript">
 
@@ -219,29 +263,31 @@ isFinished = true;
 })();
 
 function pressButton() {
+  var container = document.getElementById('container');
 
   if (isFinished) {
     isFinished = false;
-  document.getElementById('container').classList.add('transform-smaller');
+  container.classList.add('transform-smaller');
   setTimeout(function(){
-    document.getElementById('container').classList.remove('transform-smaller');
-    document.getElementById('container').classList.add('transform-bigger');
+    container.classList.remove('transform-smaller');
+    container.classList.add('transform-bigger');
   }, 480);
 
   setTimeout(function(){
-    document.getElementById('container').classList.remove('transform-bigger');
-    isFinished = true;
+    container.classList.remove('transform-bigger');
+	container.classList.add('transform-minimize');
+	setTimeout(function() {
+		// Change content
+		isFinished = true;
+		var download = document.getElementById("download-container");
+		var addyButton = document.getElementById("container");
+		download.style.display = "block";
+		addyButton.style.display = "none";
+	}, 600);
   }, 960);
 }
 
 }
-
 </script>
 
 </html>
-
-<!-- <body style="background-color: white">
-
-<img class="center-div" src="img/appIconHighRez.png"/>
-
-</body> -->
