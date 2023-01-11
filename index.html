@@ -101,7 +101,7 @@
   #inner {
     width: 18.6em;
     height: 18.6em;
-    background-image: url("img/appIconLowRez.png");
+    background-image: url("appIconLowRez.png");
 
 
     transition: transform 0.5s;
@@ -160,6 +160,13 @@ button:hover {
   background-color: rgba(0,0,0,0.1);
 }
 
+#download-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>
 
 
@@ -171,12 +178,16 @@ button:hover {
     </div>
   </div>
   <div id="download-container" style="display: none">
-	<a href="#">
-		<img src="./appstore.png" alt="Download for iPhone" />
-	</a>
-	<a href="#">
-		<img src="./googleplay.png" alt="Download for Android" />
-	</a>
+	<div>
+		<a href="#">
+			<img src="./appstore.png" alt="Download for iPhone" />
+		</a>
+	</div>
+	<div>
+		<a href="#">
+			<img src="./googleplay.png" alt="Download for Android" />
+		</a>
+	</div>
   </div>
 </body>
 
